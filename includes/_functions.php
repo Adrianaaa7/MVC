@@ -27,7 +27,7 @@ if (isset($_POST['accion'])){
 	}
 
     function editar_registro() {
-		$conexion=mysqli_connect("localhost","root","","r_user");
+		$conexion=mysqli_connect("db","mariadb","mariadb","mariadb");
 		extract($_POST);
 		$consulta="UPDATE user SET nombre = '$nombre', correo = '$correo', telefono = '$telefono',
 		password ='$password', rol = '$rol' WHERE id = '$id' ";
@@ -35,12 +35,13 @@ if (isset($_POST['accion'])){
 		mysqli_query($conexion, $consulta);
 
 
-		header('Location: ../views/user.php');
+        echo '<script>window.location="../views/user.php"</script>';
+       
 
 }
 
 function eliminar_registro() {
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=mysqli_connect("db","mariadb","mariadb","mariadb");
     extract($_POST);
     $id= $_POST['id'];
     $consulta= "DELETE FROM user WHERE id= $id";
@@ -48,7 +49,8 @@ function eliminar_registro() {
     mysqli_query($conexion, $consulta);
 
 
-    header('Location: ../views/user.php');
+    echo '<script>window.location="../views/user.php"</script>';
+    
 
 }
 
@@ -58,7 +60,7 @@ function acceso_user() {
     session_start();
     $_SESSION['nombre']=$nombre;
 
-    $conexion=mysqli_connect("localhost","root","","r_user");
+    $conexion=mysqli_connect("db","mariadb","mariadb","mariadb");
     $consulta= "SELECT * FROM user WHERE nombre='$nombre' AND password='$password'";
     $resultado=mysqli_query($conexion, $consulta);
     $filas=mysqli_fetch_array($resultado);
@@ -66,16 +68,19 @@ function acceso_user() {
 
     if($filas['rol'] == 1){ //admin
 
-        header('Location: ../views/user.php');
+        echo '<script>window.location="../views/user.php"</script>';
+     
 
     }else if($filas['rol'] == 2){//lector
-        header('Location: ../views/lector.php');
+        echo '<script>window.location="../views/lector.php"</script>';
+     
     }
     
     
     else{
 
-        header('Location: login.php');
+        
+        echo '<script>window.location="./login.php"</script>';
         session_destroy();
 
     }

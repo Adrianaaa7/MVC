@@ -6,8 +6,7 @@ error_reporting(0);
 $validar = $_SESSION['nombre'];
 
 if( $validar == null || $validar = ''){
-
-  header("Location: ../includes/login.php");
+  echo '<script>window.location="../includes/login.php"</script>';
   die();
   
 }
@@ -77,7 +76,7 @@ if( $validar == null || $validar = ''){
 
 				<?php
 
-$conexion=mysqli_connect("localhost","root","","r_user");               
+$conexion=mysqli_connect("db","mariadb","mariadb","mariadb");              
 $SQL="SELECT user.id, user.nombre, user.correo, user.password, user.telefono,
 user.fecha, permisos.rol FROM user
 LEFT JOIN permisos ON user.rol = permisos.id";

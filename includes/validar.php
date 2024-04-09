@@ -1,5 +1,5 @@
 <?php
-$conexion= mysqli_connect("localhost", "root", "", "r_user");
+$conexion=mysqli_connect("db","mariadb","mariadb","mariadb");
 
 if(isset($_POST['registrar'])){
 
@@ -18,7 +18,8 @@ if(isset($_POST['registrar'])){
     mysqli_query($conexion, $consulta);
     mysqli_close($conexion);
 
-    header('Location: ../views/user.php');
+    echo '<script>window.location="../views/user.php"</script>';
+
   }
 }
 

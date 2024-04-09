@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "r_user";
+$host = "db";
+$user = "mariadb";
+$password = "mariadb";
+$database = "mariadb";
 
 
 $conexion = mysqli_connect($host, $user, $password, $database);

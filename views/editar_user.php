@@ -18,7 +18,7 @@ if( $validar == null || $validar = ''){
 
 
 $id= $_GET['id'];
-$conexion= mysqli_connect("localhost", "root", "", "r_user");
+$conexion=mysqli_connect("db","mariadb","mariadb","mariadb");
 $consulta= "SELECT * FROM user WHERE id = $id";
 $resultado = mysqli_query($conexion, $consulta);
 $usuario = mysqli_fetch_assoc($resultado);
@@ -83,7 +83,7 @@ $usuario = mysqli_fetch_assoc($resultado);
 
                                 <div class="mb-3">
                                     
-                                <button type="submit" class="btn btn-success" >Editar</button>
+                                <button type="submit" class="btn btn-success" >Guardar</button>
                                <a href="user.php" class="btn btn-danger">Cancelar</a>
                                
                             </div>

@@ -6,7 +6,8 @@ error_reporting(0);
 $validar = $_SESSION['nombre'];
 
 if( $validar == null || $validar = ''){
-    header("Location: ../includes/login.php");
+    echo '<script>window.location="../includes/login.php"</script>';
+
     die();
 
 }
